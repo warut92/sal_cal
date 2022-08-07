@@ -22,11 +22,8 @@
     <center>
     <div>
       <h2>วันเงินเดือนออก</h2>
-      <!-- today -->
       <p id="today"></p>
-      <!-- day for salary -->
       <p id="salaryDay"></p>
-      <!-- how many days? -->
       <p id="howManyDay"></p>
       <p id="salaryNextMonth"></p>
     </div>
@@ -35,20 +32,16 @@
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth();
-    month;
-    console.log('MONTH', month)
     let onlyDate = date.getDate();
     let day = date.getDay();
+
     const weekday = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
     const monthName = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"]
-
-    document.getElementById("today").innerHTML = "วันนี้ วัน" + weekday[day] + " ที่ " + onlyDate + " " + monthName[month] + " " + (year + 543);
-
     const salaryDay = [26, 23, 28, 26, 26, 27, 22, 26, 27, 26, 25, 26]; //for 2565
 
+    document.getElementById("today").innerHTML = "วันนี้ วัน" + weekday[day] + " ที่ " + onlyDate + " " + monthName[month] + " " + (year + 543);
     document.getElementById("salaryDay").innerHTML = "เงินเดือนออก วันที่ " + salaryDay[month];
     document.getElementById("howManyDay").innerHTML =  "อีก " + (salaryDay[month] - onlyDate) + " เงินเดือนออก";
-
     document.getElementById("salaryNextMonth").innerHTML = "เดือน " + monthName[month + 1] + " เงินเดือนออก วันที่ " + salaryDay[month + 1];
 
     // const dayInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
