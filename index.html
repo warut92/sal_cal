@@ -21,12 +21,16 @@
   <body>
     <center>
     <div>
-      <h2>วันเงินเดือนออก</h2>
+      <h2>💸วันเงินเดือนออก💸</h2>
       <p id="today"></p>
       <p id="salaryDay"></p>
       <p id="howManyDay"></p>
       <p id="salaryNextMonth"></p>
     </div>
+    <br>
+    หากใช้วันละ 200 จะต้องมีเงิน  <h id="moneyNow200"></h> บาท
+    <br>
+    หากใช้วันละ 300 จะต้องมีเงิน  <h id="moneyNow300"></h> บาท
   </body>
   <script>
     let date = new Date();
@@ -43,6 +47,8 @@
     document.getElementById("salaryDay").innerHTML = "เงินเดือนออก วันที่ " + salaryDay[month];
     document.getElementById("howManyDay").innerHTML =  "อีก " + (salaryDay[month] - onlyDate) + " เงินเดือนออก";
     document.getElementById("salaryNextMonth").innerHTML = "เดือน " + monthName[month + 1] + " เงินเดือนออก วันที่ " + salaryDay[month + 1];
+    document.getElementById("moneyNow200").innerHTML = ((salaryDay[month] - onlyDate) * 200).toLocaleString("en-US");
+    document.getElementById("moneyNow300").innerHTML = ((salaryDay[month] - onlyDate) * 300).toLocaleString("en-US");
 
     // const dayInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
