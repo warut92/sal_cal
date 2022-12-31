@@ -41,7 +41,8 @@
 
     const weekday = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
     const monthName = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"]
-    const salaryDay = [26, 23, 28, 26, 26, 27, 22, 26, 27, 26, 25, 26]; //for 2565
+    // const salaryDay = [26, 23, 28, 26, 26, 27, 22, 26, 27, 26, 25, 26]; //for 2565
+    const salaryDay = [26, 23, 28, 25, 26, 27, 25, 28, 26, 26, 27, 26]; //for 2566
 
     document.getElementById("today").innerHTML = "วันนี้ วัน" + weekday[day] + " ที่ " + onlyDate + " " + monthName[month] + " " + (year + 543);
     document.getElementById("salaryDay").innerHTML = "เงินเดือนออก วันที่ " + salaryDay[month];
