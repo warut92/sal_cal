@@ -32,7 +32,7 @@
     <div>
       <h1>😄 วันเงินเดือนออก 😄</h1>
       <p id="today"></p>
-      <p id="salaryDay"></p>
+      <p id="payDate"></p>
       <p id="howManyDay"></p>
       <p id="salaryNextMonth"></p>
       หากใช้วันละ 200 จะต้องมีเงิน  <h id="moneyNow200"></h> บาท
@@ -45,28 +45,50 @@
     let year = date.getFullYear();
     let month = date.getMonth();
     let onlyDate = date.getDate();
-    console.log('ONLYDATE', onlyDate)
+    // let month = 0;
+    // let onlyDate = 25 ;
     let day = date.getDay();
 
+
     const weekday = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
+
     const monthName = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"]
-    // const salaryDay = [26, 23, 28, 26, 26, 27, 22, 26, 27, 26, 25, 26]; //for 2565
-    const salaryDay = [26, 23, 28, 25, 26, 27, 25, 28, 26, 26, 27, 26]; //for 2566
+
+    const dayInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    // const payDate = [26, 23, 28, 26, 26, 27, 22, 26, 27, 26, 25, 26]; //for 2565
+    const payDate = [26, 23, 28, 25, 26, 27, 25, 28, 26, 26, 27, 26]; //for 2566
+
+    //นับถอยหลังวันเงินเดือนออก
+    let payDay = () => {
+      if (onlyDate > payDate[month]) {
+        let payDay = (dayInMonth[month] - onlyDate) + (payDate[month + 1] + 1)
+        document.getElementById("howManyDay").innerHTML =  "อีก " + payDay + " วัน เงินเดือนออก";
+        return payDay;
+      } else {
+        let payDay = payDate[month] - onlyDate;
+        document.getElementById("howManyDay").innerHTML ="อีก " + payDay + " วัน เงินเดือนออก";
+        return payDay;
+      }
+    }
+    console.log('PAYDAY', payDay())
+
     //วันที่
     document.getElementById("today").innerHTML = "วันนี้ วัน" + weekday[day] + " ที่ " + onlyDate + " " + monthName[month] + " " + (year + 543);
-    //วันนี่เงินเดือนออก
-    document.getElementById("salaryDay").innerHTML = "เงินเดือนออก วันที่ " + salaryDay[month];
-    //นับถอยหลังวันเงินเดือนออก
-    document.getElementById("howManyDay").innerHTML =  "อีก " + (salaryDay[month] - onlyDate) + " เงินเดือนออก";
-    console.log('(SALARYDAY[MONTH] - ONLYDATE)', Math.abs(salaryDay[month] - onlyDate)+(salaryDay[month+1] - onlyDate))
-    //วันเงินเดือนออกของเดือนถัดไป
-    document.getElementById("salaryNextMonth").innerHTML = "เดือน " + monthName[month + 1] + " เงินเดือนออก วันที่ " + salaryDay[month + 1];
-    //หากใช้วันละ 200
-    document.getElementById("moneyNow200").innerHTML = ((salaryDay[month] - onlyDate) * 200).toLocaleString("en-US");
-    //หากใช้วันละ 200
-    document.getElementById("moneyNow300").innerHTML = ((salaryDay[month] - onlyDate) * 300).toLocaleString("en-US");
 
-    // const dayInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    //วันนี่เงินเดือนออก
+    document.getElementById("payDate").innerHTML = "เงินเดือนออก วันที่ " + payDate[month];
+
+    //วันเงินเดือนออกของเดือนถัดไป
+    document.getElementById("salaryNextMonth").innerHTML = "ต่อไปเดือน " + monthName[month + 1] + "<br>เงินเดือนออก วันที่ " + payDate[month + 1];
+
+    //การคำนวณแต่ละเดือน
+    //หากใช้วันละ 200
+    document.getElementById("moneyNow200").innerHTML = (payDay() * 200).toLocaleString("en-US");
+
+    //หากใช้วันละ 300
+    document.getElementById("moneyNow300").innerHTML = (payDay() * 300).toLocaleString("en-US");
+
 
   </script>
 </html>
