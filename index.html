@@ -22,7 +22,7 @@
       div {
         background-color: #BEBFC5;
         width: 300px;
-        border: 15px solid #19297C;
+        border:10px solid green;
         justify-content: center;
         border-radius: 25px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -40,9 +40,9 @@
       <p id="payDate"></p>
       <p id="howManyDay"></p>
       <p id="salaryNextMonth"></p>
-      หากใช้วันละ 200 จะต้องมีเงิน  <h id="moneyNow200"></h> บาท
+      หากใช้วันละ 200 จะต้องมีเงิน  <h id="moneyPerDay200"></h> บาท
       <br>
-      หากใช้วันละ 300 จะต้องมีเงิน  <h id="moneyNow300"></h> บาท
+      หากใช้วันละ 300 จะต้องมีเงิน  <h id="moneyPerDay300"></h> บาท
     </div>
   </body>
   <script>
@@ -89,10 +89,10 @@
 
     //การคำนวณแต่ละเดือน
     //หากใช้วันละ 200
-    document.getElementById("moneyNow200").innerHTML = (payDay() * 200).toLocaleString("en-US");
+    document.getElementById("moneyPerDay200").innerHTML = (payDay() * 200).toLocaleString("en-US");
 
     //หากใช้วันละ 300
-    document.getElementById("moneyNow300").innerHTML = (payDay() * 300).toLocaleString("en-US");
+    document.getElementById("moneyPerDay300").innerHTML = (payDay() * 300).toLocaleString("en-US");
 
 
   </script>
