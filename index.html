@@ -23,7 +23,7 @@
       div {
         background-color: #BEBFC5;
         width: 300px;
-        height: 350px;
+        height: 300px;
         border:10px solid green;
         justify-content: center;
         border-radius: 25px;
@@ -40,7 +40,7 @@
       }
     </style>
   </head>
-  <body>
+  <body ontouchstart="calculation()">
     <center>
     <div class="center">
       <h1>😄 วันเงินเดือนออก 😄</h1>
@@ -48,9 +48,11 @@
       <p id="payDate"></p>
       <p id="howManyDay"></p>
       <p id="salaryNextMonth"></p>
-      หากใช้วันละ 200 จะต้องมีเงิน  <h id="moneyPerDay200"></h> บาท
-      <br>
-      หากใช้วันละ 300 จะต้องมีเงิน  <h id="moneyPerDay300"></h> บาท
+      <span id="calculate" style="display: none;">
+        หากใช้วันละ 200 จะต้องมีเงิน  <h id="moneyPerDay200"></h> บาท
+        <br>
+        หากใช้วันละ 300 จะต้องมีเงิน  <h id="moneyPerDay300"></h> บาท
+      </span>
     </div>
     </center>
     <br>
@@ -103,6 +105,17 @@
     //หากใช้วันละ 300
     document.getElementById("moneyPerDay300").innerHTML = (payDay() * 300).toLocaleString("en-US");
 
-
+    //ฟังก์คำนวณประมาณเงินที่ต้องใช้
+    function calculation() {
+      let calDiv = document.getElementById('calculate');
+      let centerDiv = document.getElementsByClassName('center');
+      if (calDiv.style.display === "none") {
+        calDiv.style.display = "block";
+        centerDiv[0].style.height = "350px";
+      } else {
+        calDiv.style.display = "none";
+        centerDiv[0].style.height = "300px";
+      }
+    }
   </script>
 </html>
