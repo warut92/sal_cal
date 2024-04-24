@@ -57,37 +57,43 @@
     </center>
     <br>
   <script>
+    //ตัวแปรสำหรับ ปี เดือน วัน วันในสัปดาห์
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth();
     let onlyDate = date.getDate();
+    //for testing
     // let month = 0;
     // let onlyDate = 25 ;
     let day = date.getDay();
-
+    //ชื่อวันในสัปดาห์
     const weekday = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
-
+    //ชื่อเดือน
     const monthName = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"]
-
+    //จำนวนวันในแต่ละเดือน
     const dayInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
+    //วันที่เงินเดือนออก
     // const payDate = [26, 23, 28, 26, 26, 27, 22, 26, 27, 26, 25, 26]; //for 2565
     // const payDate = [26, 23, 28, 25, 26, 27, 25, 28, 26, 26, 27, 26]; //for 2566
     const payDate = [26, 23, 26, 25, 28, 25, 25, 27, 25, 28, 26, 24]; //for 2567 source https://epayroll.cgd.go.th/download/CalendarsDirectPayment.pdf
 
-    //นับถอยหลังวันเงินเดือนออก
+    //ฟังก์ชันนับถอยหลังวันเงินเดือนออก
     let payDay = () => {
+      //หากเลยวันที่เงินเดือนออก
       if (onlyDate > payDate[month]) {
+        //จำนวนวันที่เงินมาจาก (จำนวนวันในเดือนปัจจุบัน - วันนี้) + (วันที่ที่เงินเดือนออกในเดือนถัดไป + 1)
         let payDay = (dayInMonth[month] - onlyDate) + (payDate[month + 1] + 1)
+        //ส่งออกข้อความไปที่ tag howManyDay
         document.getElementById("howManyDay").innerHTML =  "อีก " + payDay + " วัน เงินเดือนออก";
+        //ส่งค่าออกนอก scop
         return payDay;
       } else {
+        //หากยังไม่ถึงวันที่เงินเดือนออก ก็คำนวณหาวันเงินเดือนออกจาก วันที่เงินเดือนออก - วันปัจจุบัน
         let payDay = payDate[month] - onlyDate;
         document.getElementById("howManyDay").innerHTML ="อีก " + payDay + " วัน เงินเดือนออก";
         return payDay;
       }
     }
-    console.log('PAYDAY', payDay())
 
     //วันที่
     document.getElementById("today").innerHTML = "วันนี้ วัน" + weekday[day] + " ที่ " + onlyDate + " " + monthName[month] + " " + (year + 543);
